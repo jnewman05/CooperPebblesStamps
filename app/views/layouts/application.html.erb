@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>CooperPebblesStamps</title>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "vendor/custom.modernizr" %>
+</head>
+<body>
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="/">Stamp Collection</a></h1>
+    </li>
+    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li><a href="/types">Stamp Typesu</a></li>
+      <li><a href="/locations">Stamp Locations</a></li>
+      <li><a href="/groupings">Stamp Groupings</a></li>
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li></li>
+    </ul>
+  </section>
+</nav>
+    <div class="row">
+      <div class="xlarge-12 columns">
+
+    <%= yield %>
+
+      </div>
+    </div>
+  <footer>
+    <div class="row">
+      <div class="xlarge-12 columns">
+
+       <p style="text-align:center;">*Stamp Value Source from 2014 Scotts Catalog</p>
+       <p style="text-align:center;">All rights reserved © 2015</p>
+
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
+
+
+
+

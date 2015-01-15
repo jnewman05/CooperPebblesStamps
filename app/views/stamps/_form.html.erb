@@ -1,0 +1,153 @@
+<%= form_for(@stamp) do |f| %>
+  <% if @stamp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@stamp.errors.count, "error") %> prohibited this stamp from being saved:</h2>
+
+      <ul>
+      <% @stamp.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+      <table border="0" style="width: 110%;">
+        <tr>
+          <td>
+            <div class="field">
+              <%= f.label :scott_number, "Scoot's #" %><br>
+              <%= f.text_field :scott_number, :size => 6 %>
+            </div>
+          </td>
+          <td>
+            <div class="field">
+              <%= f.label :description, "Description" %><br>
+              <%= f.text_field :description, :size => 26 %>
+            </div>
+          </td>
+          <td>
+            <div class="field">
+              <%= f.label :year_issued, "Year Issued" %><br>
+              <%= f.text_field :year_issued, :size => 7 %>
+            </div>
+          </td>
+          <td>
+            <div class="field">
+              <%= f.label :face_value, "Postage Amount" %><br>
+              <%= f.text_field :face_value, :size => 6 %>
+              </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="field">
+              <%= f.label :type_id, "Stamp Type" %><br>
+              <%= collection_select(:stamp, :type_id, Type.all, :id, :name, {:prompt => true}, {:class => 'set_dd_width'} ) %>
+
+            </div>
+          </td>
+          <td>
+            <div class="field">
+              <%= f.label :type_id, "Grouping" %><br>
+              <%= collection_select(:stamp, :grouping_id, Grouping.all, :id, :name, {:prompt => true}, {:class => 'set_dd_width'} ) %>
+
+            </div>
+          </td>
+          <td>
+            <div class="field">
+              <%= f.label :type_id, "Location" %><br>
+              <%= collection_select(:stamp, :location_id, Location.all, :id, :name, {:prompt => true}, {:class => 'set_dd_width'} ) %>
+
+            </div>
+          </td>
+          <td>&nbsp;</td>
+       </tr>
+       <tr>
+
+         <td colspan="2">
+           <div class="field">
+             <%= f.label :num_items, "# of blocks or Booklets" %><br>
+             <%= f.number_field :num_items %>
+           </div>
+          <td>
+          <div class="field">
+            <%= f.label :location_type_name, "Location Name" %><br>
+            <%= f.text_field :location_type_name %>
+          </div>
+          </td>
+
+          <td></td>
+        </tr>
+        <tr>
+
+          <td colspan="2">
+            <div class="field">
+              <%= f.label :num_in_items, "# of stamps in block or booklet" %><br>
+              <%= f.number_field :num_in_items %>
+            </div>
+          <td>
+            <div class="field">
+              <%= f.label :location_type_num, "Location #" %><br>
+              <%= f.text_field :location_type_num %>
+            </div>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>
+            <div class="field">
+              <%= f.label :num_used, "# of Used Stamps" %><br>
+              <%= f.text_field :num_used %>
+            </div>
+          </td>
+          <td>
+            <div class="field">
+              <%= f.label :scotts_used_value, "Scotts Used Value" %><br>
+              <%= f.text_field :scotts_used_value %>
+            </div>
+          </td>
+
+          <td></td>
+       </tr>
+       <tr>
+          <td>
+            <div class="field">
+              <%= f.label :num_mint, "# of Mint Stamps" %><br>
+              <%= f.text_field :num_mint %>
+            </div>
+          </td>
+         <td>
+           <div class="field">
+             <%= f.label :scotts_mint_value, "Scotts Mint Value" %><br>
+             <%= f.text_field :scotts_mint_value %>
+           </div>
+         </td>
+         <td></td>
+
+
+        <tr>
+          <td colspan="4">
+            <div class="field">
+              <%= f.label :date_lastr_viewed, "Date Last Viewed" %><br>
+              <%= f.date_select :date_lastr_viewed %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            <div class="field">
+              <%= f.label :comments, "Comments" %><br>
+              <%= f.text_area :comments, :cols=>130, :rows=>10 %>
+            </div>
+          </td>
+         </tr>
+         <tr>
+          <td colspan="4">
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+<% end %>

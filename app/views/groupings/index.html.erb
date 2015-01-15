@@ -1,0 +1,29 @@
+<h3>Stamp Groupings</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Abrev</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groupings.each do |grouping| %>
+      <tr>
+        <td><%= grouping.id %></td>
+        <td><%= grouping.name %></td>
+        <td><%= grouping.abrev %></td>
+
+        <td><%= link_to 'Edit', edit_grouping_path(grouping) %></td>
+        <td><%= link_to 'Destroy', grouping, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Grouping', new_grouping_path %>

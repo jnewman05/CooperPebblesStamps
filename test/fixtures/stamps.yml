@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  type_id: 1
+  location_id: 1
+  grouping_id: 1
+  scott_number: MyString
+  num_in_block: 1
+  face: 
+  year_issued: MyString
+  description: MyText
+  location_type_name: MyString
+  location_type_num: MyString
+  number_of_booklets: 1
+  num_used: 1
+  scotts_used_value: 9.99
+  total_used_value: 9.99
+  num_mint: 1
+  scotts_mint_value: 
+  total_mint_value: 9.99
+  total_all: 9.99
+  date_lastr_viewed: 2014-12-10
+  comments: MyText
+
+two:
+  id: 1
+  type_id: 1
+  location_id: 1
+  grouping_id: 1
+  scott_number: MyString
+  num_in_block: 1
+  face: 
+  year_issued: MyString
+  description: MyText
+  location_type_name: MyString
+  location_type_num: MyString
+  number_of_booklets: 1
+  num_used: 1
+  scotts_used_value: 9.99
+  total_used_value: 9.99
+  num_mint: 1
+  scotts_mint_value: 
+  total_mint_value: 9.99
+  total_all: 9.99
+  date_lastr_viewed: 2014-12-10
+  comments: MyText

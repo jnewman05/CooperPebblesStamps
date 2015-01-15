@@ -1,0 +1,114 @@
+<h3>Stamps</h3>
+
+<table>
+  <thead align="center">
+    <tr>
+
+      <th>Scott #</th>
+      <th>Description</th>
+      <th>Postage $</th>
+      <th>Issued</th>
+
+      <th>T<br>y<br>p<br>e</th>
+      <th>L<br>o<br>c<br>a<br>t<br>i<br>o<br>n</th>
+      <th>G<br>r<br>o<br>u<br>p<br>i<br>n<br>g</th>
+
+      <th>Date Last Viewed</th>
+      <th># Blocks Sheets Bookleta</th>
+
+      <th>Location type name</th>
+
+      <th># Used</th>
+      <th>Scotts used value</th>
+      <th>Used Total </th>
+      <th># Mint</th>
+      <th>Scotts Mint Value</th>
+      <th>Mint Total</th>
+      <th>Total</th>
+      <th></th>
+      <th></th>
+
+
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% grand_total = 0 %>
+    <% @stamps.each do |stamp| %>
+      <tr>
+
+        <td><%= stamp.scott_number %></td>
+        <td width="400"><%= stamp.description %></td>
+        <% if stamp.face_value %>
+            <td style="text-align:right;"><%= number_to_currency(stamp.face_value.to_f, :precision=>2) %></td>
+        <% else %>
+            <td><%= stamp.face_value %></td>
+        <% end %>
+        <td><%= stamp.year_issued %></td>
+
+        <td><%= get_stamp_type(stamp.type_id) unless stamp.type_id.nil? %></td>
+        <td><%= get_stamp_location(stamp.location_id) unless stamp.location_id.nil? %></td>
+        <td><%= get_stamp_grouping(stamp.grouping_id) unless stamp.grouping_id.nil? %></td>
+        <td><%= stamp.date_lastr_viewed %></td>
+
+        <td><%= stamp.location_type_name %></td>
+        <td><%= stamp.num_items %></td>
+        <td><%= stamp.num_used %></td>
+        <% if stamp.scotts_used_value %>
+            <td style="text-align:right;"><%= number_to_currency(stamp.scotts_used_value.to_f, :precision=>3) %></td>
+        <% else %>
+            <td><%= stamp.scotts_used_value %></td>
+        <% end %>
+        <% if stamp.num_used.nil? && stamp.scotts_used_value.nil?
+                used_total = nil
+            else
+                used_total = stamp.num_used.to_i * stamp.scotts_used_value.to_f
+            end %>
+        <% if used_total %>
+           <td style= "text-align:right;"><%= number_to_currency(used_total, :precision =>3 ) %></td>
+        <% else %>
+           <td><%= used_total %></td>
+        <% end %>
+
+        <td><%= stamp.num_mint %></td>
+        <% if stamp.scotts_mint_value %>
+            <td style="text-align:right;"><%= number_to_currency(stamp.scotts_mint_value.to_f, :precision=>3) %></td>
+        <% else %>
+            <td><&nbp;</td>
+        <% end %>
+        <% if stamp.num_mint.nil? && stamp.scotts_mint_value.nil?
+              mint_total = nil
+            else
+              mint_total = stamp.num_mint.to_i * stamp.scotts_mint_value.to_f
+            end %>
+        <% if mint_total %>
+            <td style= "text-align:right;"><%= number_to_currency(mint_total, :precision =>3 ) %></td>
+        <% else %>
+            <td><&nbsp;></td>
+        <% end %>
+
+        <% row_total = used_total + mint_total %>
+        <td style= "text-align:right;"><%= number_to_currency(row_total, :precision =>3) %></td>
+
+
+        <td><%= link_to 'Edit', edit_stamp_path(stamp) %></td>
+        <td><%= link_to 'Destroy', stamp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% grand_total = grand_total + row_total %>
+    <% end %>
+     <tr>
+       <td colspan="16">
+         Grand Total
+       </td>
+       <td style="text-align:right;border-top:solid;border-bottom:double;"><%= number_to_currency(grand_total, :precision => 3) %>
+       </td>
+       <td colspan="2"></td>
+
+     </tr>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Stamp', new_stamp_path %>
